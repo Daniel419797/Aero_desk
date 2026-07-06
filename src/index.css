@@ -1,0 +1,293 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --color-canvas: #ffffff;
+    --color-surface-subtle: #f8fafc;
+    --color-ink: #0f172a;
+    --color-muted: #64748b;
+    --color-border: #e2e8f0;
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: var(--color-canvas);
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    font-family: var(--font-sans);
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  button,
+  select {
+    cursor: pointer;
+  }
+
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  a:focus-visible {
+    outline: 2px solid #60a5fa;
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    color: #ffffff;
+    background: var(--color-primary);
+  }
+}
+
+/* Thin, quiet scrollbars suit a dense operations workspace. */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Existing page components use these legacy names. They now describe flat surfaces. */
+.glass-panel,
+.glass-card {
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.glass-panel-hover {
+  transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease;
+}
+
+.glass-panel-hover:hover {
+  background: #f8fafc !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Keep necessary dialogs bounded while removing decorative page cards. */
+.fixed.inset-0 > .glass-panel {
+  border: 1px solid var(--color-border) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 24px 60px -28px rgb(15 23 42 / 35%) !important;
+}
+
+main .grid > .glass-panel {
+  border-top: 1px solid var(--color-border) !important;
+  border-radius: 0 !important;
+}
+
+/* Light-theme compatibility for the existing utility-heavy feature pages. */
+[class*="bg-[#070a13]"] {
+  background-color: #ffffff !important;
+}
+
+[class*="bg-slate-950"] {
+  background-color: #ffffff !important;
+}
+
+[class*="bg-slate-900"] {
+  background-color: #f8fafc !important;
+}
+
+[class*="bg-slate-850"],
+[class*="bg-slate-800"] {
+  background-color: #f1f5f9 !important;
+}
+
+[class*="border-slate-"] {
+  border-color: var(--color-border) !important;
+}
+
+.text-white,
+[class*="text-slate-100"],
+[class*="text-slate-200"] {
+  color: var(--color-ink) !important;
+}
+
+[class*="text-slate-300"] {
+  color: #334155 !important;
+}
+
+[class*="text-slate-400"],
+[class*="text-slate-500"] {
+  color: var(--color-muted) !important;
+}
+
+[class*="text-slate-600"] {
+  color: #475569 !important;
+}
+
+[class*="text-indigo-"],
+[class*="text-purple-"] {
+  color: var(--color-primary) !important;
+}
+
+[class*="bg-indigo-"],
+[class*="bg-purple-"] {
+  background-color: #eff6ff !important;
+}
+
+[class*="border-indigo-"],
+[class*="border-purple-"] {
+  border-color: #bfdbfe !important;
+}
+
+[class*="shadow-"] {
+  box-shadow: none !important;
+}
+
+[class*="rounded-2xl"] {
+  border-radius: 8px !important;
+}
+
+[class*="rounded-xl"] {
+  border-radius: 7px !important;
+}
+
+/* All primary CTA gradients become one deliberate AeroDesk blue. */
+[class*="bg-gradient-to"][class*="text-white"] {
+  color: #ffffff !important;
+  background-color: var(--color-primary) !important;
+  background-image: none !important;
+}
+
+[class*="bg-gradient-to"][class*="text-white"]:hover {
+  background-color: var(--color-primary-hover) !important;
+}
+
+[class*="bg-blue-600"].text-white,
+[class*="bg-blue-500"].text-white,
+[class*="bg-red-"].text-white,
+[class*="bg-rose-"].text-white {
+  color: #ffffff !important;
+}
+
+/* Search/filter rails are section tools, not floating cards. */
+main [class~="bg-slate-900/40"][class*="rounded-2xl"] {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  padding-bottom: 16px !important;
+  background: #ffffff !important;
+  border-width: 0 0 1px !important;
+  border-radius: 0 !important;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  color: var(--color-ink) !important;
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+option {
+  color: var(--color-ink);
+  background: #ffffff;
+}
+
+table {
+  color: #334155 !important;
+  background: #ffffff;
+}
+
+thead {
+  color: var(--color-muted) !important;
+  background: #f8fafc !important;
+}
+
+tbody tr {
+  border-color: var(--color-border) !important;
+}
+
+tbody tr:hover {
+  background: #f8fafc !important;
+}
+
+pre {
+  color: #334155 !important;
+  background: #f8fafc !important;
+  border-color: var(--color-border) !important;
+}
+
+.text-glow-blue,
+.text-glow-purple {
+  text-shadow: none !important;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+@media (max-width: 767px) {
+  main .grid > .glass-panel {
+    border-top-color: var(--color-border) !important;
+  }
+
+  table {
+    min-width: 680px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
